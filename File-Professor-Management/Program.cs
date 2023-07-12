@@ -1,4 +1,5 @@
 using File_Professor_Management.Data;
+using File_Professor_Management.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,7 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<FileProfessorManagementAPIDbContext>(options => options.UseInMemoryDatabase("FileProfessorDb"));
-
+builder.Services.AddTransient<IManageFile, ManageFile>();
 //-------------------------------------------------
 var app = builder.Build();
 
